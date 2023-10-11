@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title color="dark">Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-input [(ngModel)]="email" placeholder="Email" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="password" placeholder="Password" type="password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="firstName" placeholder="First Name" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="lastName" placeholder="Last Name" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="pic" placeholder="Picture Url" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="bio" placeholder="Bio" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-select label="Are you a service provider?" placeholder="Select"(ionChange)="onServiceSelect($event)">
+      <ion-select-option value="yes">Yes</ion-select-option>
+      <ion-select-option value="no">No</ion-select-option>
+   </ion-select>
+
+  </ion-item>
+
+  <ion-item *ngIf="isServiceProvider">
+    <ion-label>Service</ion-label>
+    <ion-select label="Service"  placeholder="All" [(ngModel)]="service"  >
+      <ion-select-option value="captain">Captain</ion-select-option>
+      <ion-select-option value="admiral">Admiral</ion-select-option>
+      <ion-select-option value="fleet-admiral">Fleet Admiral</ion-select-option>
+      <ion-select-option value="vice-captain">Vice-Captain</ion-select-option>
+      <ion-select-option value="vice-admiral">Vice Admiral</ion-select-option>
+      <ion-select-option value="barbarian">Barbarian</ion-select-option>
+      <ion-select-option value="celestial-dragon">Celestial dragon</ion-select-option>
+    </ion-select>
+</ion-item >
+  <ion-button  color="dark" class="ion-padding ion-button" expand="block"
+  (click)="register()">
+    Register
+  </ion-button>
+
+  <p class="ion-text-center ">
+    <ion-spinner class="ion-spinner" *ngIf="isLoading"></ion-spinner>
+  </p>
+
+
+  <p class="ion-text-center">Already have an account? <strong routerLink="/login">Login.</strong></p>
+</ion-content>

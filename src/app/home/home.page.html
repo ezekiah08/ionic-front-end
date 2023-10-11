@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Services
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <h4 class="heading"> Filter</h4>
+
+  <ion-item class="ionBg">
+      <ion-label>Service</ion-label>
+      <ion-select label="Service"  placeholder="All" [(ngModel)]="selectedService" (ionChange)="onServiceSelect($event)" >
+        <ion-select-option value="captain">Captain</ion-select-option>
+        <ion-select-option value="admiral">Admiral</ion-select-option>
+        <ion-select-option value="fleet-admiral">Fleet Admiral</ion-select-option>
+        <ion-select-option value="vice-captain">Vice-Captain</ion-select-option>
+        <ion-select-option value="vice-admiral">Vice Admiral</ion-select-option>
+        <ion-select-option value="barbarian">Barbarian</ion-select-option>
+      </ion-select>
+  </ion-item >
+
+  <h4 class="heading">Browser</h4>
+  <ion-list *ngIf="serviceProvider ">
+    <ion-item *ngFor="let provider of serviceProvider">
+      <ion-thumbnail  slot="end">
+        <img src="{{provider.pic}}">
+      </ion-thumbnail>
+      <ion-label>
+        <h3>{{provider.firstName}} {{provider.lastName}}</h3>
+        <p>{{provider.bio}}</p>
+        <ion-badge color="dark">{{provider.service}}</ion-badge>
+      </ion-label>
+    </ion-item>
+    <p class="ion-text-center heading" *ngIf="!serviceProvider||serviceProvider.length <= 0">No Service added!</p>
+  </ion-list>
+</ion-content >

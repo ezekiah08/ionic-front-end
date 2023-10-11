@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item >
+    <ion-input [(ngModel)]="email" placeholder="email" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="password" placeholder="password" type="password"></ion-input>
+  </ion-item>
+
+  <ion-button class="btn-width" color="dark" class="ion-padding ion-button" expand="block"
+  (click)="login()">
+    Login
+  </ion-button>
+
+  <p class="ion-text-center ">
+    <ion-spinner class="ion-spinner" *ngIf="isLoading"></ion-spinner>
+  </p>
+
+  <p class="ion-text-center">Don't have an account? <strong routerLink="/register">Register.</strong></p>
+
+</ion-content>
